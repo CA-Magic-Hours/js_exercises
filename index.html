@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>JavaScript Exercises</title>
+
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Muli:400,600,700,900" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<header>
+		<h1>Magic Hour: JavaScript Exercises</h1>
+	</header>
+	<div class="section-wrapper">
+		<section class="exercises">
+			<h1 class="section-header">
+				Exercise #1
+			</h1>
+			<div class="codewrap noTopBorder">
+				<p>
+					Write a function that takes a string as an argument (input) and returns an array containing the position of each vowel in the string. Note: We want the ‘actual’ position of each vowel, not its index.
+				</p>
+				<p>
+					EX: If given the string ‘super’ we want an array that returns [2,4] (the second and fourth letter in the string).
+				</p>
+				<code id="answer0" class="prettyprint answer">
+					function vowelIndices(word) {
+					<br><span class="pd-lf-20">var vowels = ['a', 'e', 'i', 'o', 'u', 'y'];</span>
+					<br><span class="pd-lf-20">var answer = [];</span>
+
+					<br><span class="pd-lf-20">for (i = 0; i < word.length; i++) {</span>
+					<br><span class="pd-lf-40">for (j = 0; j < vowels.length; j++) {</span>
+					<br><span class="pd-lf-60">if (word[i] === vowels[j]) {</span>
+					<br><span class="pd-lf-80">answer.push(i + 1);</span>
+					<br><span class="pd-lf-60">};</span>
+					<br><span class="pd-lf-40">};</span>
+					<br><span class="pd-lf-20">};
+					<br><span class="pd-lf-20">return answer;</span>
+					<br>};
+				</code>
+				<br>
+				<button class="btn" value='answer0'>Show/Hide Solution</button>
+			</div>
+		</section>
+	</div>
+
+	<div class="section-wrapper">
+		<section class="exercises">
+			<h1 class="section-header">
+				Exercise #2
+			</h1>
+			<div class="codewrap noTopBorder">
+				<p>
+					Write a function that accepts two arrays as arguments. The first array is a collection of items, and the second array is a collection of integers. The output should be an array that contains the items from the first array at the index as denoted by the integer from the second array. If <i>either</i> array is empty, return an empty array.
+				</p>
+				<p>
+					EX1: [‘a’, ‘b’, 'c', ‘d'] and [2,0], output: ['c', ‘a’]
+					<br>EX2: [1,2,3,4,5] and [2,4,0] output: [3, 5, 1]
+					<br>EX3: [0,3,4] and [2,6]output: [4]
+				</p>
+				<code id="answer1" class="prettyprint answer">
+					function findArray(arr1, arr2) {
+					<br><span class="pd-lf-20">var find_array = [];</span>
+					<br><span class="pd-lf-20">if (arr1.length > 0 && arr2.length > 0) {</span>
+					<br><span class="pd-lf-40">for (var i = 0; i < arr2.length; i++) {</span>
+					<br><span class="pd-lf-60"> find_array.push(arr1[arr2[i]]);</span>
+					<br><span class="pd-lf-40">};</span>
+					<br><span class="pd-lf-20">};</span>
+					<br><span class="pd-lf-20">return find_array;</span>
+					<br>};
+				</code>
+				<br>
+				<button class="btn" value='answer1'>Show/Hide Solution</button>
+			</div>
+		</section>
+	</div>
+
+	<div class="section-wrapper">
+		<section class="exercises">
+			<h1 class="section-header">
+				Exercise #3
+			</h1>
+			<div class="codewrap noTopBorder">
+				<p>
+					The Western Suburbs Croquet Club has two categories of membership, Senior and Open. They would like your help with an application form that will tell prospective members which category they will be placed.
+				</p>
+				<p>
+					To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+				</p>
+				<p>
+					Input will consist of a list of lists containing two items each. Each list contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap.
+				</p>
+				<p>
+					Output will consist of a list of string values stating whether the respective member is to be placed in the senior or open category.
+				</p>
+				<p>
+					EX:
+					<br>Given this input: [[18, 20],[45, 2],[61, 12],[37, 6],[21, 21],[78, 9]]
+					<br>This is the result: ["Open", "Open", "Senior", "Open", "Open", "Senior"]
+				</p>
+				<code id="answer2" class="prettyprint answer">
+					function openOrSenior(data){
+  				<br><span class="pd-lf-20">var result = [];</span>
+  				<br><span class="pd-lf-20">for(i = 0; i < data.length; i++) {</span>
+  			  		<br><span class="pd-lf-40">var age = data[i][0];</span>
+    					<br><span class="pd-lf-40">var handicap = data[i][1];</span>
+    					<br><span class="pd-lf-40">if (age >= 55 && handicap > 7) {</span>
+      					<br><span class="pd-lf-60">result.push("Senior");</span>
+    					<br><span class="pd-lf-40">} else {</span>
+      					<br><span class="pd-lf-60">result.push("Open");</span>
+    					<br><span class="pd-lf-40">};</span>
+  					<br><span class="pd-lf-20">};</span>
+  					<br><span class="pd-lf-20">return result;</span>
+					<br>};
+				</code>
+				<br>
+				<button class="btn" value='answer2'>Show/Hide Solution</button>
+			</div>
+		</section>
+	</div>
+
+	<div class="section-wrapper">
+		<section class="exercises">
+			<h1 class="section-header">
+				Exercise #4
+			</h1>
+			<div class="codewrap noTopBorder">
+				<p>
+					Write a function that returns the sum of all numbers up to and including 'n' that are divisible by 3 and 5.
+				</p>
+				<p>
+					EX1: if 'n' is 5, then output is 8 (because in 1,2,3,4,5 only 3 and 5 are divisible by 3 and 5, and 3 + 5 = 8)
+					<br>EX2: if 'n' is 10, then output is 33 (because 1,2,3,4,5,6,7,8,9,10, only 3,5,6,9,10 are divisible by 3 and 5, and 3 + 5 + 6 + 9 + 10 = 33)
+				</p>
+				<code id="answer3" class="prettyprint answer">
+					function findSum(n) {
+  					<br><span class="pd-lf-20">var acc = 0;</span>
+  					<br><span class="pd-lf-20">for (i = 0; i <= n; i++) {</span>
+    					<br><span class="pd-lf-40">if(i % 3 === 0 || i % 5 === 0) {</span>
+      					<br><span class="pd-lf-60">acc = acc+i;</span>
+    					<br><span class="pd-lf-40">};</span>
+  					<br><span class="pd-lf-20">};</span>
+  					<br><span class="pd-lf-20">return acc;</span>
+					<br>};
+				</code>
+				<br>
+				<button class="btn" value='answer3'>Show/Hide Solution</button>
+			</div>
+		</section>
+	</div>
+
+	<div class="section-wrapper">
+		<section class="exercises">
+			<h1 class="section-header">
+				Exercise #5
+			</h1>
+			<div class="codewrap noTopBorder">
+				<p>
+					Given an array of numbers, find the smallest and largest numbers and then difference between the two. Output should be an array: [smallest, largest, difference]
+				</p>
+				<p>
+					EX: Given [1,2,3,4,5,6], Output [1,6,5]
+				</p>
+				<code id="answer4" class="prettyprint answer">
+					function differenceInNums(array) {
+   					<br><span class="pd-lf-20">var sorted = array.sort(function(a,b) {</span>
+      				<br><span class="pd-lf-40">return a - b;</span>
+   					<br><span class="pd-lf-20">};</span>
+   					<br><span class="pd-lf-20">return [sorted[0], sorted[sorted.length-1], sorted[sorted.length-1] - sorted[0]];</span>
+					<br>};
+				</code>
+				<br>
+				<button class="btn" value='answer4'>Show/Hide Solution</button>
+			</div>
+		</section>
+	</div>
+
+	<div class="section-wrapper">
+		<section class="exercises">
+			<h1 class="section-header">
+				Exercise #6
+			</h1>
+			<div class="codewrap noTopBorder">
+				<p>
+					Write a function that takes 2 parameters. The first is a number, the second is a limit. Your goal is to produce the SUM of ALL multiples of the given number up to but NOT including the limit.
+				</p>
+				<p>
+					EX1: If you are given 2 (number) and 9 (limit), your multiples are 2,4,6,8 and your result should be the SUM of these numbers (20).
+					<br>EX2: If given 3 (number) and 13 (limit), your multiples are 3,6,9,12 and your result should be the SUM of these numbers (30).
+				</p>
+				<code id="answer5" class="prettyprint answer">
+					function sumMul(num, lim){
+    				<br><span class="pd-lf-20">var acc = 0;</span>
+    				<br><span class="pd-lf-20">if (lim <= 0 ) {</span>
+        			<br><span class="pd-lf-40">return 'INVALID';</span>
+    				<br><span class="pd-lf-20">};</span>
+    				<br><span class="pd-lf-20">for (i = 0; i <= Math.floor(lim / num); i++) {</span>
+        			<br><span class="pd-lf-40">acc = acc + (num * i);</span>
+    				<br><span class="pd-lf-20">};</span>
+    				<br><span class="pd-lf-20">return acc;</span>
+					<br>};
+				</code>
+				<br>
+				<button class="btn" value='answer5'>Show/Hide Solution</button>
+			</div>
+		</section>
+	</div>
+
+	<div class="section-wrapper">
+		<section class="exercises">
+			<h1 class="section-header">
+				Exercise #7
+			</h1>
+			<div class="codewrap noTopBorder">
+				<p>
+					You are given a 3 digit number. Re-arrange the digits so that you produce the largest possible number combination. If you're given an input that isn't a 3-digit number return 'null'.
+				</p>
+				<p>
+					EX1: Input: 123, Output: 321
+					<br>EX2: Input: 'abc', Output: null
+					<br>EX3: Input: 1234, Output: null
+				</p>
+				<code id="answer6" class="prettyprint answer">
+					function maxRedigit(num) {
+    				<br><span class="pd-lf-20">if (num <= 0 || isNaN(num) || num.toString().length <= 2 || num.toString().length >= 4) {</span>
+        			<br><span class="pd-lf-40">return null;</span>
+    				<br><span class="pd-lf-20">};</span>
+    				<br><span class="pd-lf-20">return parseInt(num.toString().split('').sort(function(a,b) {</span>
+							<br><span class="pd-lf-40">return b - a;</span>
+						<br><span class="pd-lf-20">}).join(''));</span>
+					<br>};
+				</code>
+				<br>
+				<button class="btn" value='answer6'>Show/Hide Solution</button>
+			</div>
+		</section>
+	</div>
+
+	<div class="section-wrapper">
+		<section class="exercises">
+			<h1 class="section-header">
+				Exercise #8
+			</h1>
+			<div class="codewrap noTopBorder">
+				<p>
+					Write a function that accepts a list of strings. Each letter in the string has a value equal to its position in the alphabet ( a = 1, b = 2, c = 3, ... , z = 26). Spaces have no value.
+				</p>
+				<p>
+					Your output should be an array containing the value of the string (sum of its letter values) multiplied by its position in the input array (ie: 1st, 2nd, not its index).
+				</p>
+				<p>
+					The string 'abc' has a value of 6 ( a = 1, b = 2, c = 3 and 1 + 2 + 3 = 6).
+
+					<br><br>EX1: ['abc', 'abc'] should return [6, 12] because (6 * 1, 6 * 2)
+					<br>EX2: ['abc', 'abc abc'] should return [6, 24] because ( 6 * 1, (6 + 6) * 2)
+				</p>
+				<code id="answer7" class="prettyprint answer">
+					function wordValue(arr) {
+    				<br><span class="pd-lf-20">var alphabet = 'abcdefghijklmnopqrstuvwxyz';</span>
+    				<br><span class="pd-lf-20">var output = [];</span>
+    				<br><span class="pd-lf-20">var pointObj = {};</span>
+						<br>
+    				<br><span class="pd-lf-20">for (i = 1; i <= alphabet.length; i++) {</span>
+        			<br><span class="pd-lf-40">var letter = alphabet.split('')[i - 1];</span>
+        			<br><span class="pd-lf-40">pointObj[letter] = i;</span>
+    				<br><span class="pd-lf-20">};</span>
+						<br>
+    				<br><span class="pd-lf-20">for (i = 0; i < arr.length; i++) {</span>
+        			<br><span class="pd-lf-40">var value = 0;</span>
+        			<br><span class="pd-lf-40">var item = arr[i].split('');</span>
+        			<br><span class="pd-lf-40">for (j = 0; j < item.length; j++) {</span>
+            		<br><span class="pd-lf-60">if (!pointObj[item[j]]) {</span>
+                	<br><span class="pd-lf-80">continue;</span>
+            		<br><span class="pd-lf-60">};</span>
+            	<br><span class="pd-lf-60">value += pointObj[item[j]];</span>
+        			<br><span class="pd-lf-40">};</span>
+        			<br><span class="pd-lf-40">value *= (i + 1);</span>
+        			<br><span class="pd-lf-40">output.push(value);</span>
+    				<br><span class="pd-lf-20">};</span>
+    				<br><span class="pd-lf-20">return output;</span>
+					<br>};
+				</code>
+				<br>
+				<button class="btn" value='answer7'>Show/Hide Solution</button>
+			</div>
+		</section>
+	</div>
+
+	<div class="section-wrapper">
+		<section class="exercises">
+			<h1 class="section-header">
+				Exercise #9
+			</h1>
+			<div class="codewrap noTopBorder">
+				<p>
+					Write a function that takes 2 parameters: a sum and a product. The goal is to find the numbers that when ADDED together give you the sum AND when multiplied together give you the product. Output should be an array with the two correct numbers. If no combination exists, return 'null'.
+				</p>
+				<p>
+					EX1: Input: 13 (sum) and 12 (product), Output: [1,12] (because 1 * 12 = 12, and 1 + 12 = 13)
+					<br>EX2: Input 12 (sum) and 32 (product), Output: [8,4] (because 8 * 4 = 32, and 8 + 4 = 12)
+				</p>
+				<code id="answer8" class="prettyprint answer">
+					function sumAndMultiply(sum, multiply) {
+    				<br><span class="pd-lf-20">for(var num1 = 0; num1 < sum; num1++) {</span>
+       				<br><span class="pd-lf-40">var ans = [];</span>
+       				<br><span class="pd-lf-40">var num2 = sum - num1;</span>
+							<br>
+       				<br><span class="pd-lf-40">if(num1 * num2 === multiply) {</span>
+           			<br><span class="pd-lf-60">ans.push(num1);</span>
+           			<br><span class="pd-lf-60">ans.push(num2);</span>
+           			<br><span class="pd-lf-60">return ans;</span>
+       				<br><span class="pd-lf-40">};</span>
+    				<br><span class="pd-lf-20">};</span>
+    				<br><span class="pd-lf-20">return null;</span>
+					<br>};
+				</code>
+				<br>
+				<button class="btn" value='answer8'>Show/Hide Solution</button>
+			</div>
+		</section>
+	</div>
+
+	<div class="section-wrapper">
+		<section class="exercises">
+			<h1 class="section-header">
+				Exercise #10
+			</h1>
+			<div class="codewrap noTopBorder">
+				<p>
+					Write a function that accepts two lists as arguments. The first is a list of prices, the second is a list of fruits to purchase. In the case of duplicate fruits, the same price is to be used (ie: if you have to buy 2 Apples, you buy them for the same price - the prices are per TYPE of fruit, not per ITEM). You want to return an array of 2 items: the BEST possible outcome, and the WORST possible outcome.
+				</p>
+				<p>
+					EX1:
+					<br>Inputs: You have prices of [4,2,1,10,5] and a list of ["apple", "orange", "mango"]
+					<br>Your BEST case scenario is that each fruit costs as little as possible, so apple = 1, orange = 2, mango = 4, 1+2+4 = 7. So, BEST CASE SCENARIO you get everything you want for $7.
+					<br>Your WORST case scenario is that each fruit costs as much as possible, so apple = 10, orange = 5, mango = 4 (the fact mango is 4 in both cases is not intentional), 10 + 5 + 4 = 19. So, WORST CASE SCENARIO you get everything you want for $19.
+					<br>Output would be [7,19]
+				</p>
+				<p>
+					EX2:
+					<br>Inputs: You have prices of [3,5,1,6,8,1] and a list of ["peach", "grapefruit", "banana", "orange", "orange"] (note 'orange' appears twice)
+					<br>Your best case scenario: orange = 1, peach = 1, grapefruit = 3, banana = 5. (1 * 2) + 1 + 3 + 5 = 11.
+					<br>Your worst case scenario: orange  = 8, peach = 6, grapefruit = 5, banana = 3. (8 * 2) + 6 + 5 + 3 = 30.
+					<br>Output would be [11,30]
+				</p>
+				<code id="answer9" class="prettyprint answer">
+					function buyFruits(priceLabels,fruitsList){
+						<br><span class="pd-lf-20">var uniqueFruits = [];</span>
+						<br><span class="pd-lf-20">var fruitCount = {};</span>
+						<br><span class="pd-lf-20">var best = 0;</span>
+						<br><span class="pd-lf-20">var worst = 0;</span>
+						<br>
+						<br><span class="pd-lf-20">// We use this loop to create an array that contains ONLY unique items (ie: no duplicates)</span>
+						<br><span class="pd-lf-20">for (i = 0; i < fruitsList.length; i++) {</span>
+							<br><span class="pd-lf-40">if (uniqueFruits.indexOf(fruitsList[i]) === -1) {</span>
+								<br><span class="pd-lf-60">uniqueFruits.push(fruitsList[i]);</span>
+							<br><span class="pd-lf-40">};</span>
+						<br><span class="pd-lf-20">};</span>
+						<br>
+						<br><span class="pd-lf-20">// We use this loop create an object with properties equal to the names of the fruits, and values equal to the number of times the fruit appears in the original list.</span>
+						<br><span class="pd-lf-20">for (i = 0; i < fruitsList.length; i++) {</span>
+							<br><span class="pd-lf-40">if (!fruitCount[fruitsList[i]]) {</span>
+								<br><span class="pd-lf-60">fruitCount[fruitsList[i]];</span>
+								<br><span class="pd-lf-20">fruitCount[fruitsList[i]] = 1;</span>
+							<br><span class="pd-lf-40">} else {</span>
+								<br><span class="pd-lf-60">fruitCount[fruitsList[i]]++;</span>
+							<br><span class="pd-lf-40">};</span>
+						<br><span class="pd-lf-20">};</span>
+						<br>
+						<br><span class="pd-lf-20">// We use this loop to figure out what the best case scenario is for the total bill</span>
+						<br><span class="pd-lf-20">for (i = 0; i < uniqueFruits.length; i++) {</span>
+							<br><span class="pd-lf-40">// We arrange the prices in ascending order (small to big)</span>
+							<br><span class="pd-lf-40">var ascendingPrices = priceLabels.sort(function(a,b) {</span>
+								<br><span class="pd-lf-60">return a - b;</span>
+							<br><span class="pd-lf-40">});</span>
+							<br><span class="pd-lf-40">// We arrange the array of unique fruits in descending order, using the values of fruitCount as our comparators</span>
+							<br><span class="pd-lf-40">// ie: if 'orange' appears 3 times in our primary list, it's value in fruitCount will be 3, and we'll want that at the beginning of our array</span>
+							<br><span class="pd-lf-40">// We want that because our prices are assorted small -> big, and out fruits are assorted most common -> least common</span>
+							<br><span class="pd-lf-40">// If a fruit is more common, we want it to be as cheap as possible</span>
+							<br><span class="pd-lf-40">// We arrange the arrays this way so it's easy to use 'i' to target the various things we'll need to target</span>
+							<br><span class="pd-lf-40">var descendingFruitCount = uniqueFruits.sort(function(a,b) {</span>
+								<br><span class="pd-lf-60">return fruitCount[b] - fruitCount[a];</span>
+							<br><span class="pd-lf-40">});</span>
+							<br><span class="pd-lf-40">// fruitCount[descendingFruitCount[i]] = the property on fruitCount that associates with the value of descendingFruitCount[i]</span>
+							<br><span class="pd-lf-40">// If descendingFruitCount[i] = 'orange', then fruitCount[descendingFruitCount[i]] = fruitCount['orange'], which is equal to fruitCount.orange</span>
+							<br><span class="pd-lf-40">best += (fruitCount[descendingFruitCount[i]] * ascendingPrices[i]);</span>
+						<br><span class="pd-lf-20">};</span>
+						<br>
+
+					<br><span class="pd-lf-20">for (i = 0; i < uniqueFruits.length; i++) {</span>
+					<br><span class="pd-lf-40">// We arrange the prices in descending order (big to small)</span>
+					<br><span class="pd-lf-40">var descendingPrices = priceLabels.sort((a,b) => b - a);</span>
+					<br><span class="pd-lf-40">// We arrange the array of unique fruits in descending order, using the values of fruitCount as our comparators</span>
+					<br><span class="pd-lf-40">// ie: if 'orange' appears 3 times in our primary list, it's value in fruitCount will be 3, and we'll want that at the beginning of our array</span>
+					<br><span class="pd-lf-40">// We want that because our prices are assorted big -> small, and out fruits are assorted most common -> least common</span>
+					<br><span class="pd-lf-40">// If a fruit is more common, we want it to be as expensive as possible</span>
+					<br><span class="pd-lf-40">// We arrange the arrays this way so it's easy to use 'i' to target the various things we'll need to target</span>
+					<br><span class="pd-lf-40">var descendingFruitCount = uniqueFruits.sort(function(a,b) {</span>
+						<br><span class="pd-lf-60">return fruitCount[b] - fruitCount[a];</span>
+					<br><span class="pd-lf-40">});</span>
+					<br><span class="pd-lf-40">// fruitCount[descendingFruitCount[i]] = the property on fruitCount that associates with the value of descendingFruitCount[i]</span>
+					<br><span class="pd-lf-40">// If descendingFruitCount[i] = 'orange', then fruitCount[descendingFruitCount[i]] = fruitCount['orange'], which is equal to fruitCount.orange</span>
+					<br><span class="pd-lf-40">worst += (fruitCount[descendingFruitCount[i]] * descendingPrices[i]);</span>
+					<br><span class="pd-lf-20">};</span>
+
+					<br><span class="pd-lf-20">// Return an array that lists the best possible outcome and the worst possible outcome</span>
+					<br><span class="pd-lf-20">return [best, worst];</span>
+					<br>};
+				</code>
+				<br>
+				<button class="btn" value='answer9'>Show/Hide Solution</button>
+			</div>
+		</section>
+	</div>
+	<script src="js/main.js"></script>
+</body>
+</html>
